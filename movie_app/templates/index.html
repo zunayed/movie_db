@@ -1,0 +1,68 @@
+{% load movie_app_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Database</title> 
+
+    <link href="{{ STATIC_URL }}vender/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vender/flat_bootstrap/css/bootflat.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}vender/css-avatars.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <br/>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> 
+                <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="col-md-12 centered">
+            <div class="list-group"><a href="#" class="list-group-item active">
+                <h4 class="list-group-item-heading">Movie Database</h4>
+                {% if movie_list %}
+                    {% for movie in movie_list %}
+                    {% random_avatar_color as color %}
+                    <a class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                            <i class="avatar avatar-color-{{ color }} avatar-letter-{{ movie.title|slice:":1"|lower }} avatar-md avatar-plain"></i>
+                            {{ movie.title }}
+                        </h4>
+                    </a> 
+                    {% endfor %}
+                {% else %}
+                <a class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Currently no movies in the db
+                    </h4>
+                </a> 
+                {% endif %}
+            </div>
+        </div>
+
+        <form action="/" method="POST">
+            <div class="input-group">
+                <input class="form-control" placeholder="Movie Title" name='title'>
+                <div class="input-group-btn">
+                    <button type="submit" value="Submit" class="btn btn-primary" tabindex="-1">Add Movie</button>
+                </div>
+            </div> 
+        </form>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="{{ STATIC_URL }}vender/jquery-1.11.0.min.js"></script>
+    <script src="{{ STATIC_URL }}vender/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Bootflat's JS files.-->
+    <script src="{{ STATIC_URL }}vender/flat_bootstrap/js/icheck.min.js"></script>
+    <script src="{{ STATIC_URL }}vender/flat_bootstrap/js/jquery.fs.selecter.min.js"></script>
+    <script src="{{ STATIC_URL }}vender/flat_bootstrap/js/jquery.fs.stepper.min.js"></script>
+
+</body>
+</html>
