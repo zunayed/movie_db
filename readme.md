@@ -12,8 +12,8 @@ Req: virtualenv, pip, python2.7
 
     virtualenv movie_app_venv
     source movie_app_venv/bin/activate
-    git clone git@github.com:zunayed/todo_site.git      
-    cd movie_app
+    git clone git@github.com:zunayed/movie_db.git   
+    cd movie_db
     pip install -r requirements.txt
     python manage.py migrate
     python manage.py runserver
