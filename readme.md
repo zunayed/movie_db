@@ -4,7 +4,6 @@ Movie DB app w/Django
 ##### Table of Contents  
 [Setup Instructions](#setup)  
 [Screenshots](#screenshots)  
-[Other](#other)  
 
 ## Setup
 
