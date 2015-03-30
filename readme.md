@@ -21,3 +21,5 @@ Req: virtualenv, pip, python2.7
 
 
 
+
+![screenshot1](http://i.imgur.com/4iMziOI.png) ![screenshot2](http://i.imgur.com/xMdQdfI.png)
