@@ -3,7 +3,7 @@ Movie DB app w/Django
 
 ##### Table of Contents  
 [Setup Instructions](#setup)  
-[Features](#features)  
+[Screenshots](#screenshots)  
 [Other](#other)  
 
 ## Setup
@@ -21,5 +21,5 @@ Req: virtualenv, pip, python2.7
 
 
 
-
+## Screenshots
 ![screenshot1](http://i.imgur.com/4iMziOI.png) ![screenshot2](http://i.imgur.com/xMdQdfI.png)
