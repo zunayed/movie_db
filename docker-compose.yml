@@ -1,0 +1,40 @@
+version: '2'
+services:
+  db-data:
+    image: busybox:latest
+    volumes: 
+        - /spare/local/mariadb:/var/lib/mysql
+
+  db: 
+    image: mariadb 
+    restart: always
+    volumes_from: 
+        - db-data
+    environment:
+        - MYSQL_ROOT_PASSWORD=rootpassword
+        - MYSQL_USER=mariadb_user
+        - MYSQL_PASSWORD=testpassword
+        - MYSQL_DATABASE=towerportal
+
+  redis:
+     image: redis:latest
+     restart: always
+     ports:
+        - "6379:6379"
+
+  web:
+    build: .
+    command: bash /code/.docker/web_entrypoint.sh
+    volumes:
+        - .:/code
+    ports:
+        - "8000:8000"
+    depends_on:
+        - redis
+        - db
+
+  celery-worker:
+    build: .
+    command: bash -c "sleep 3 && celery -A movie_db worker -l info"
+    depends_on:
+        - redis

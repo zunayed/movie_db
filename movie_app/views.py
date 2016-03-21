@@ -7,6 +7,7 @@ from django.views.decorators.http import require_http_methods
 
 from .models import Movie
 from .forms import MovieForm
+from .tasks import add
 
 
 @csrf_exempt
@@ -17,6 +18,7 @@ def index(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Movie Added')
+	    add.delay(2, 2)
         else:
             for field, error in form.errors.iteritems():
                 messages.error(request, "{} : {}".format(field, error.as_text()))

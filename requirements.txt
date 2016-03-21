@@ -1,0 +1,6 @@
+Unipath==0.2.1
+MySQL-python
+django==1.7.11
+django-redis
+redis
+celery
