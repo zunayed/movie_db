@@ -1,15 +1,16 @@
 version: '2'
 services:
-  db-data:
+  db_data:
     image: busybox:latest
+    command: "true"
     volumes: 
         - /spare/local/mariadb:/var/lib/mysql
 
   db: 
-    image: mariadb 
+    image: mariadb:10.1.12
     restart: always
     volumes_from: 
-        - db-data
+        - db_data
     environment:
         - MYSQL_ROOT_PASSWORD=rootpassword
         - MYSQL_USER=mariadb_user
@@ -17,7 +18,7 @@ services:
         - MYSQL_DATABASE=towerportal
 
   redis:
-     image: redis:latest
+     image: redis:3.0.7
      restart: always
      ports:
         - "6379:6379"
@@ -33,7 +34,7 @@ services:
         - redis
         - db
 
-  celery-worker:
+  celery_worker:
     build: .
     command: bash -c "sleep 3 && celery -A movie_db worker -l info"
     depends_on:

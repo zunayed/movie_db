@@ -1,7 +1,7 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Zunayed Ali "zunayed@gmail.com"
 RUN apt-get -qq update
-RUN apt-get install -y python-dev python-setuptools supervisor git-core libmysqlclient-dev
+RUN apt-get install -y python-dev python-setuptools supervisor git-core libmysqlclient-dev --fix-missing
 RUN easy_install pip
 # RUN pip install virtualenv
 # RUN pip install uwsgi
