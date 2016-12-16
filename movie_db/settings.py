@@ -62,14 +62,22 @@ WSGI_APPLICATION = 'movie_db.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'towerportal',                      # Or path to database file if using sqlite3.
+# 	'USER': 'mariadb_user',
+# 	'PASSWORD': 'testpassword',
+# 	'HOST': 'db',
+# 	'PORT': '3306' 
+#     }
+# }
+
+# sql version
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'towerportal',                      # Or path to database file if using sqlite3.
-	'USER': 'mariadb_user',
-	'PASSWORD': 'testpassword',
-	'HOST': 'db',
-	'PORT': '3306' 
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
