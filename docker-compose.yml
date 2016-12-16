@@ -30,6 +30,7 @@ services:
         - .:/code
     ports:
         - "8000:8000"
+        - "8012:8012"
     depends_on:
         - redis
         - db
