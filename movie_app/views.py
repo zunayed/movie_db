@@ -18,7 +18,7 @@ def index(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Movie Added')
-	    add.delay(2, 2)
+	    # add.delay(2, 2)
         else:
             for field, error in form.errors.iteritems():
                 messages.error(request, "{} : {}".format(field, error.as_text()))
